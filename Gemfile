@@ -25,9 +25,10 @@ group :test do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.0.0'
-gem 'jquery-rails'
 gem 'pg'
 gem 'slim-rails'
+gem 'webpacker'
+gem 'jquery-rails'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil

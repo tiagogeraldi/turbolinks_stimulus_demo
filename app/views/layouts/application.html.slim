@@ -7,10 +7,38 @@ html
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Turbolinks Stimulus Demo'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    == javascript_pack_tag 'application'
     == csrf_meta_tags
   body
-    header
-      == render 'layouts/navigation'
+    nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
+      a.navbar-brand.col-sm-3.col-md-2.mr-0 href="#"
+        Company name
+      input.form-control.form-control-dark.w-100 aria-label="Search" placeholder="Search" type="text"
+      ul.navbar-nav.px-3
+        li.nav-item.text-nowrap
+          a.nav-link href="#"  Sign out
+
     main[role="main"]
       == render 'layouts/messages'
-      == yield
+
+      .container-fluid
+        .row
+          nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+            .sidebar-sticky
+              ul.nav.flex-column
+                li.nav-item
+                  a.nav-link href="#{root_path}" 
+                    span data-feather="home" 
+                    | Dashboard
+                    span.sr-only (current)
+               
+              ul.nav.flex-column.mb-2
+                li.nav-item
+                  a.nav-link href="#{posts_path}" 
+                    span data-feather="file-text" 
+                    | Posts
+                
+          .col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 role="main"
+            .container-fluid
+              .row
+                == yield
