@@ -1,1 +1,14 @@
-h1 Posts
+div data-controller="posts" data-posts-new-url="#{new_post_path}"
+  h1 Posts
+
+  input data-target="posts.name" type="text"
+
+  button.btn.btn-primary data-action="click->posts#greet"
+    | Greet
+
+  p data-target="posts.output"
+
+  hr.line
+
+  = link_to 'New Post', '#', class: 'btn btn-link',
+    data: { action: "click->posts#new" }
